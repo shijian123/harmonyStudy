@@ -145,4 +145,5 @@ export struct TaskCell {
 @Extend(Text) function finishedTaskStyle() {
   .decoration({type: TextDecorationType.LineThrough})
   .fontColor('#B1B2b3')
+  .opacity(0.4)
 }

@@ -11,6 +11,7 @@ struct VideoPage {
 
   build(){
     Column(){
+      // 不支持 preview
       Video({
         src: this.soure,
         previewUri: this.previewUrl

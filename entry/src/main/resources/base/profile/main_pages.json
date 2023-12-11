@@ -1,5 +1,11 @@
 {
   "src": [
-    "pages/Index"
+    "pages/Index",
+    "pages/mainTab",
+    "pages/study/videoPage",
+    "pages/study/webPage",
+    "pages/study/httpRequestPage",
+    "pages/goods/goodsList",
+    "pages/task/taskPage"
   ]
 }

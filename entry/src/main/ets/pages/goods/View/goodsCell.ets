@@ -26,6 +26,9 @@ export struct GoodsCell {
     Row({space: 4}){
       Image(this.item.image)
         .width(100)
+      .onClick(()=> {
+
+      })
       Column({space: 4}){
         Text(this.item.name)
           .fontSize(20)

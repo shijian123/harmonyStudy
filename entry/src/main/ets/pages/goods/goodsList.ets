@@ -1,4 +1,5 @@
 
+import router from '@ohos.router'
 import {GoodsModel} from '../goods/Model/goodsModel'
 import {GoodsCell} from '../goods/View/goodsCell'
 
@@ -12,7 +13,7 @@ import {GoodsCell} from '../goods/View/goodsCell'
 
 @Entry
 @Component
-struct goodList {
+export  struct goodList {
 
   private  dataList: Array<GoodsModel> = [
     new GoodsModel('华为Mate60', $r('app.media.pic3'), 6999),
@@ -30,12 +31,14 @@ struct goodList {
     new GoodsModel('Mate X5', $r('app.media.pic3'),12990),
   ]
 
+  @State dataModel: object = router.getParams()
+
   build() {
 
     Column() {
-      Header({title: '商品列表'})
+      Header({title: '商品列表:id_' + this.dataModel?.["goodsId"]})
 
-      List({space: 8}) {
+      List({space: 8, initialIndex: 1}) {
         ForEach(
           this.dataList,
           (item: GoodsModel) => {
@@ -49,8 +52,26 @@ struct goodList {
           }
         )
       }
+      .divider( {strokeWidth: 0.5, color: Color.Gray, startMargin: 16, endMargin: 16})
       .width('100%')
       .layoutWeight(1)// 约束的权重
+      .onScrollIndex((firstIndex: number, lastIndex: number) => {
+        console.info('first' + firstIndex)
+        console.info('last' + lastIndex)
+      })
+      .onScroll((scrollOffset: number, scrollState: ScrollState) => {
+        console.info('scrollOffset' + scrollOffset)
+        console.info('scrollState' + scrollState)
+      })
+      .onReachStart(() => {
+        console.info('onReachStart')
+      })
+      .onReachEnd(() => {
+        console.info('onReachEnd')
+      })
+      .onScrollStop( ()=> {
+        console.info('onScrollStop')
+      })
     }
   }
 }
@@ -63,7 +84,11 @@ struct Header {
   build() {
     Row(){
       Image($r('app.media.base_nav_back_icon'))
-        .width(40)
+        .width(24)
+        .onClick( () => {
+          router.back()
+          // router.back({url:"pages/Index"})
+        })
       Text(this.title)
         .fontSize(32)
         .fontWeight(FontWeight.Bold)

@@ -59,7 +59,7 @@ struct Index {
 嵌套类型以及数组中的对象属性无法触发视图更新
 
 
-##### @Prop & @Link
+##### @Prop & @Link & @Watch
 当父子组件进行数据同步时使用
 
 两者的差异
@@ -69,7 +69,12 @@ struct Index {
 
 ![状态管理.png](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f2ae857f9bb84bf08e4e27e5caad861e~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1270&h=665&s=226616&e=png&b=010101)
 
+@Watch: 监听状态变化
+@Link @Watch('onClickIndexChange') clickIndex: number;
 
+onClickIndexChange() {
+...
+}
 
 ##### @Provide & @Consume
 
